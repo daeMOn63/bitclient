@@ -43,14 +43,20 @@ import (
 
 func main() {
     client := bitclient.NewBitClient("https://bitbucket.org/", "<username>", "<password>")
-    projects, err := client.GetProjects()
+
+    requestParams := bitclient.PagedRequest{
+        Limit: 10,
+        Start: 0,
+    }
+
+    projectsResponse, err := client.GetProjects(requestParams)
 
     if err != nil {
         fmt.Println(err)
         os.Exit(1)
     }
 
-    for _, project := range projects {
+    for _, project := range projectsResponse.Values {
         fmt.Printf("Project : %d - %s\n", project.Id, project.Key)
     }
 }
