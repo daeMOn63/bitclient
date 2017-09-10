@@ -1,7 +1,7 @@
 BitClient
 ===
 
-BitClient is a Golang Api client for Atlassian Bitbucket.
+BitClient is a Golang Api client for Atlassian Bitbucket REST api (v1.0).
 
 <!-- toc -->
 - [Overview](#overview)
@@ -57,5 +57,5 @@ func main() {
 ```
 
 ## Supported versions
-The library is currently developed according to the documentation of `Atlassian Bitbucket v4.5.2`.
+The library is currently developed according to the documentation of [Atlassian Bitbucket v4.5.2](https://developer.atlassian.com/static/rest/bitbucket-server/4.5.2/bitbucket-rest.html)
 Other versions have not been tested yet.

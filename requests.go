@@ -4,11 +4,9 @@ import (
 	"net/http"
 )
 
-// ##############################################################################
-// Request
-// ##############################################################################
+const BASE_URI = "/rest/api/1.0"
 
-type PagedParams struct {
+type PagedRequest struct {
 	Limit uint `url:"limit,omitempty"`
 	Start uint `url:"start,omitempty"`
 }
@@ -18,14 +16,19 @@ type RequestError struct {
 	Message string
 }
 
-func (r RequestError) Error() string {
-	return r.Message
+type ErrorResponse struct {
+	Errors []Error
 }
 
-type CreateRepositoryRequest struct {
-	Name     string `json:"name"`
-	ScmId    string `json:"scmId"`
-	Forkable bool   `json:"forkable"`
+type PagedResponse struct {
+	Size       uint `json:"size"`
+	Limit      uint `json:"limit"`
+	IsLastPage bool `json:"isLastPage"`
+	Start      uint `json:"start"`
+}
+
+func (r RequestError) Error() string {
+	return r.Message
 }
 
 func (bc *BitClient) checkReponse(resp *http.Response, err error) (*http.Response, error) {
@@ -36,31 +39,32 @@ func (bc *BitClient) checkReponse(resp *http.Response, err error) (*http.Respons
 			Message: resp.Status + " - " + resp.Request.URL.String(),
 		}
 	}
-
 	return resp, err
 }
 
-func (bc *BitClient) DoGetPaged(uri string, rData interface{}, rError interface{}) (*http.Response, error) {
+func (bc *BitClient) DoGet(uri string, params interface{}, rData interface{}) (*http.Response, error) {
 
-	maxPagedParam := PagedParams{
-		Limit: 10000,
-		Start: 0,
-	}
+	rError := new(ErrorResponse)
 
-	resp, err := bc.sling.New().Get(uri).QueryStruct(maxPagedParam).Receive(rData, rError)
+	resp, err := bc.sling.New().Get(BASE_URI+uri).QueryStruct(params).Receive(rData, rError)
 
 	return bc.checkReponse(resp, err)
 }
 
-func (bc *BitClient) DoPost(uri string, data interface{}, rData interface{}, rError interface{}) (*http.Response, error) {
+func (bc *BitClient) DoPost(uri string, data interface{}, rData interface{}) (*http.Response, error) {
 
-	resp, err := bc.sling.New().Post(uri).BodyJSON(data).Receive(rData, rError)
+	rError := new(ErrorResponse)
+
+	resp, err := bc.sling.New().Post(BASE_URI+uri).BodyJSON(data).Receive(rData, rError)
 
 	return bc.checkReponse(resp, err)
 }
 
-func (bc *BitClient) DoPut(uri string, data interface{}, rData interface{}, rError interface{}) (*http.Response, error) {
-	resp, err := bc.sling.New().Put(uri).BodyJSON(data).Receive(rData, rError)
+func (bc *BitClient) DoPut(uri string, data interface{}, rData interface{}) (*http.Response, error) {
+
+	rError := new(ErrorResponse)
+
+	resp, err := bc.sling.New().Put(BASE_URI+uri).BodyJSON(data).Receive(rData, rError)
 
 	return bc.checkReponse(resp, err)
 }
