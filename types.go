@@ -48,6 +48,20 @@ type User struct {
 	Type         string
 }
 
+type DetailedUser struct {
+	User                        User
+	DirectoryName               string
+	Deletable                   bool
+	LastAuthenticationTimestamp uint
+	MutableDetails              bool
+	MutableGroups               bool
+}
+
+type Group struct {
+	Name      string
+	Deletable bool
+}
+
 type Tag struct {
 	Id              string
 	DisplayId       string

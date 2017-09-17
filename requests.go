@@ -51,6 +51,15 @@ func (bc *BitClient) DoGet(uri string, params interface{}, rData interface{}) (*
 	return bc.checkReponse(resp, err)
 }
 
+func (bc *BitClient) DoPostUrl(uri string, params interface{}, rData interface{}) (*http.Response, error) {
+
+	rError := new(ErrorResponse)
+
+	resp, err := bc.sling.New().Post(BASE_URI+uri).QueryStruct(params).Receive(rData, rError)
+
+	return bc.checkReponse(resp, err)
+}
+
 func (bc *BitClient) DoPost(uri string, data interface{}, rData interface{}) (*http.Response, error) {
 
 	rError := new(ErrorResponse)
@@ -65,6 +74,15 @@ func (bc *BitClient) DoPut(uri string, data interface{}, rData interface{}) (*ht
 	rError := new(ErrorResponse)
 
 	resp, err := bc.sling.New().Put(BASE_URI+uri).BodyJSON(data).Receive(rData, rError)
+
+	return bc.checkReponse(resp, err)
+}
+
+func (bc *BitClient) DoDeleteUrl(uri string, params interface{}, rData interface{}) (*http.Response, error) {
+
+	rError := new(ErrorResponse)
+
+	resp, err := bc.sling.New().Delete(BASE_URI+uri).QueryStruct(params).Receive(rData, rError)
 
 	return bc.checkReponse(resp, err)
 }
