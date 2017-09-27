@@ -126,3 +126,67 @@ type PullRequest struct {
 	Participants []Participant
 	Links        Links
 }
+
+type SonarSettings struct {
+	Project       SonarSettingsProject       `json:"project,omitempty"`
+	Issues        SonarSettingsIssues        `json:"issues,omitempty"`
+	DuplicateCode SonarSettingsDuplicateCode `json:"duplicateCode,omitempty"`
+	TestCoverage  SonarSettingsTestCoverage  `json:"testCoverage,omitempty"`
+	Statistics    SonarSettingsStatistics    `json:"statistics,omitempty"`
+	MergeChecks   SonarSettingsMergeChecks   `json:"mergeChecks,omitempty"`
+	Provisioning  SonarSettingsProvisioning  `json:"provisioning,omitempty"`
+}
+
+type SonarSettingsProject struct {
+	SonarEnabled                 bool   `json:"sonarEnabled,omitempty"`
+	ServerConfigId               int    `json:"serverConfigId,omitempty"`
+	MasterProjectKey             string `json:"masterProjectKey,omitempty"`
+	ProjectBaseKey               string `json:"projectBaseKey,omitempty"`
+	AnalysisMode                 string `json:"analysisMode,omitempty"`
+	BuildType                    string `json:"buildType,omitempty"`
+	IllegalBranchCharReplacement string `json:"illegalBranchCharReplacement,omitempty"`
+	BranchPrefix                 string `json:"branchPrefix,omitempty"`
+	PullRequestBranch            string `json:"pullRequestBranch,omitempty"`
+	ShowOnlyNewOrChangedLines    bool   `json:"showOnlyNewOrChangedLines,omitempty"`
+	ProjectCleanupEnabled        bool   `json:"projectCleanupEnabled,omitempty"`
+	ForkCleanupEnabled           bool   `json:"forkCleanupEnabled,omitempty"`
+	MatchingBranchesRegex        string `json:"matchingBranchesRegex,omitempty"`
+	IncrementalModeForMatches    string `json:"incrementalModeForMatches,omitempty"`
+}
+
+type SonarSettingsIssues struct {
+	ShowSonarIssues        bool   `json:"showOnlyNewIssues,omitempty"`
+	ShowOnlyNewIssues      bool   `json:"showOnlyNewIssues,omitempty"`
+	SonarIssuesMinSeverity string `json:"showOnlyNewIssues,omitempty"`
+}
+
+type SonarSettingsDuplicateCode struct {
+	ShowDuplicateCode bool `json:"showDuplicateCode,omitempty"`
+}
+
+type SonarSettingsTestCoverage struct {
+	ShowCoverage bool   `json:"showCoverage,omitempty"`
+	CoverageType string `json:"coverageType,omitempty"`
+}
+
+type SonarSettingsStatistics struct {
+	ShowStatistics           bool `json:"showStatistics,omitempty"`
+	CollapsedByDefault       bool `json:"collapsedByDefault,omitempty"`
+	ShowQualityGates         bool `json:"showQualityGates,omitempty"`
+	ShowBehindCommitsWarning bool `json:"showBehindCommitsWarning,omitempty"`
+}
+
+type SonarSettingsMergeChecks struct {
+	MergeChecksEnabled       bool   `json:"mergeChecksEnabled,omitempty"`
+	QualityGatesEnabled      bool   `json:"qualityGatesEnabled,omitempty"`
+	TechnicalDebtMaxIncrease int    `json:"technicalDebtMaxIncrease,omitempty"`
+	SonarIssuesMaxNew        int    `json:"sonarIssuesMaxNew,omitempty"`
+	SonarIssueTypeMaxNew     string `json:"sonarIssueTypeMaxNew,omitempty"`
+	DuplicateCodeMaxIncrease int    `json:"duplicateCodeMaxIncrease,omitempty"`
+	CoverageMinPercentage    int    `json:"coverageMinPercentage,omitempty"`
+}
+
+type SonarSettingsProvisioning struct {
+	QualityProfileProvisioningEnabled bool `json:"qualityProfileProvisioningEnabled,omitempty"`
+	PropertiesProvisioningEnabled     bool `json:"propertiesProvisioningEnabled,omitempty"`
+}
