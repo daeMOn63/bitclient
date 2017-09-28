@@ -32,7 +32,7 @@ func (bc *BitClient) GetRepositories(projectKey string, params PagedRequest) (Ge
 	response := GetRepositoriesResponse{}
 
 	_, err := bc.DoGet(
-		fmt.Sprintf("/rest/api/1.0/projects/%s/repos", projectKey),
+		fmt.Sprintf("/projects/%s/repos", projectKey),
 		params,
 		&response,
 	)
@@ -51,7 +51,7 @@ func (bc *BitClient) CreateRepository(projectKey string, params CreateRepository
 	response := Repository{}
 
 	_, err := bc.DoPost(
-		fmt.Sprintf("/rest/api/1.0/projects/%s/repos", projectKey),
+		fmt.Sprintf("/projects/%s/repos", projectKey),
 		params,
 		&response,
 	)
