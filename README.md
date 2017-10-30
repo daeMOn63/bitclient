@@ -63,5 +63,5 @@ func main() {
 ```
 
 ## Supported versions
-The library is currently developed according to the documentation of [Atlassian Bitbucket v4.5.2](https://developer.atlassian.com/static/rest/bitbucket-server/4.5.2/bitbucket-rest.html)
+The library is currently developed according to the documentation of [Atlassian Bitbucket v4.13.1](https://developer.atlassian.com/static/rest/bitbucket-server/4.13.1/bitbucket-rest.html)
 Other versions have not been tested yet.

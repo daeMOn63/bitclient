@@ -6,16 +6,39 @@ import (
 
 type SetRepositoryUserPermissionRequest struct {
 	Username   string `url:"name"`
-	Permission string `url:"permissions"`
+	Permission string `url:"permission"`
 }
 
 func (bc *BitClient) SetRepositoryUserPermission(projectKey string, repositorySlug string, params SetRepositoryUserPermissionRequest) error {
 
 	_, err := bc.DoPut(
-		fmt.Sprintf("/projects/%s/repos/%s/permissions", projectKey, repositorySlug),
+		fmt.Sprintf("/projects/%s/repos/%s/permissions/users", projectKey, repositorySlug),
 		params,
 		nil,
 	)
 
 	return err
+}
+
+type GetRepositoryUserPermissionRequest struct {
+	PagedRequest
+	Filter string
+}
+
+type GetRepositoryUserPermissionResponse struct {
+	PagedResponse
+	Values []User
+}
+
+func (bc *BitClient) GetRepositoryUserPermission(projectKey string, repositorySlug string, params GetRepositoryUserPermissionRequest) (GetRepositoryUserPermissionResponse, error) {
+
+	response := GetRepositoryUserPermissionResponse{}
+
+	_, err := bc.DoGet(
+		fmt.Sprintf("/projects/%s/repos/%s/permissions/users", projectKey, repositorySlug),
+		params,
+		&response,
+	)
+
+	return response, err
 }
