@@ -11,7 +11,7 @@ type SetRepositoryUserPermissionRequest struct {
 
 func (bc *BitClient) SetRepositoryUserPermission(projectKey string, repositorySlug string, params SetRepositoryUserPermissionRequest) error {
 
-	_, err := bc.DoPut(
+	_, err := bc.DoPutUrl(
 		fmt.Sprintf("/projects/%s/repos/%s/permissions/users", projectKey, repositorySlug),
 		params,
 		nil,

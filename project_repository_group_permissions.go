@@ -11,7 +11,7 @@ type SetRepositoryGroupPermissionRequest struct {
 
 func (bc *BitClient) SetRepositoryGroupPermission(projectKey string, repositorySlug string, params SetRepositoryGroupPermissionRequest) error {
 
-	_, err := bc.DoPut(
+	_, err := bc.DoPutUrl(
 		fmt.Sprintf("/projects/%s/repos/%s/permissions/groups", projectKey, repositorySlug),
 		params,
 		nil,
