@@ -195,3 +195,8 @@ type UserPermission struct {
 	User       User
 	Permission string `json:"permission,omitempty"`
 }
+
+type GroupPermission struct {
+	Group      Group
+	Permission string `json:"permission,omitempty"`
+}
