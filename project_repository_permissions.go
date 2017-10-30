@@ -27,7 +27,7 @@ type GetRepositoryUserPermissionRequest struct {
 
 type GetRepositoryUserPermissionResponse struct {
 	PagedResponse
-	Values []User
+	Values []UserPermission
 }
 
 func (bc *BitClient) GetRepositoryUserPermission(projectKey string, repositorySlug string, params GetRepositoryUserPermissionRequest) (GetRepositoryUserPermissionResponse, error) {

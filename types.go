@@ -190,3 +190,8 @@ type SonarSettingsProvisioning struct {
 	QualityProfileProvisioningEnabled bool `json:"qualityProfileProvisioningEnabled,omitempty"`
 	PropertiesProvisioningEnabled     bool `json:"propertiesProvisioningEnabled,omitempty"`
 }
+
+type UserPermission struct {
+	User       User
+	Permission string `json:"permission,omitempty"`
+}
