@@ -42,3 +42,25 @@ func (bc *BitClient) GetRepositoryGroupPermission(projectKey string, repositoryS
 
 	return response, err
 }
+
+func (bc *BitClient) CloneRepositoryGroupPermissions(sourceProjectKey, sourceRepositorySlug, targetProjectKey, targetRepositorySlug string) error {
+
+	response, err := bc.GetRepositoryGroupPermission(sourceProjectKey, sourceRepositorySlug, GetRepositoryGroupPermissionRequest{})
+	if err != nil {
+		return err
+	}
+
+	for _, permission := range response.Values {
+
+		params := SetRepositoryGroupPermissionRequest{
+			Name:       permission.Group.Name,
+			Permission: permission.Permission,
+		}
+		err := bc.SetRepositoryGroupPermission(targetProjectKey, targetRepositorySlug, params)
+		if err != nil {
+			return fmt.Errorf("error adding %s permission to group %s on %s/%s: %s", permission.Permission, permission.Group.Name, targetProjectKey, targetRepositorySlug, err)
+		}
+	}
+
+	return nil
+}
