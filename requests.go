@@ -78,6 +78,15 @@ func (bc *BitClient) DoPut(uri string, data interface{}, rData interface{}) (*ht
 	return bc.checkReponse(resp, err)
 }
 
+func (bc *BitClient) DoPutUrl(uri string, data interface{}, rData interface{}) (*http.Response, error) {
+
+	rError := new(ErrorResponse)
+
+	resp, err := bc.sling.New().Put(BASE_URI+uri).QueryStruct(data).Receive(rData, rError)
+
+	return bc.checkReponse(resp, err)
+}
+
 func (bc *BitClient) DoDeleteUrl(uri string, params interface{}, rData interface{}) (*http.Response, error) {
 
 	rError := new(ErrorResponse)

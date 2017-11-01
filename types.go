@@ -190,3 +190,33 @@ type SonarSettingsProvisioning struct {
 	QualityProfileProvisioningEnabled bool `json:"qualityProfileProvisioningEnabled,omitempty"`
 	PropertiesProvisioningEnabled     bool `json:"propertiesProvisioningEnabled,omitempty"`
 }
+
+type UserPermission struct {
+	User       User
+	Permission string `json:"permission,omitempty"`
+}
+
+type GroupPermission struct {
+	Group      Group
+	Permission string `json:"permission,omitempty"`
+}
+
+type BranchRestriction struct {
+	Id      int      `json:"id,omitempty"`
+	Type    string   `json:"type,omitempty"`
+	Matcher Matcher  `json:"matcher,omitempty"`
+	Users   []User   `json:"users,omitempty"`
+	Groups  []string `json:"groups,omitempty"`
+}
+
+type Matcher struct {
+	Id        string      `json:"id,omitempty"`
+	DisplayId string      `json:"displayId,omitempty"`
+	Active    bool        `json:"active,omitempty"`
+	Type      MatcherType `json:"type,omitempty"`
+}
+
+type MatcherType struct {
+	Id   string `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+}
