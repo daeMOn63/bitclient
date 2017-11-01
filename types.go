@@ -220,3 +220,25 @@ type MatcherType struct {
 	Id   string `json:"id,omitempty"`
 	Name string `json:"name,omitempty"`
 }
+
+type PullRequestSettings struct {
+	MergeConfig              PullRequestMergeConfig `json:"mergeConfig,omitempty"`
+	RequiredAllApprovers     bool                   `json:"requiredAllApprovers,omitempty"`
+	RequiredAllTasksComplete bool                   `json:"requiredAllTasksComplete,omitempty"`
+	RequiredApprovers        uint                   `json:"requiredApprovers,omitempty"`
+	RequiredSuccessfulBuilds uint                   `json:"requiredSuccessfulBuilds,omitempty"`
+}
+
+type PullRequestMergeConfig struct {
+	DefaultStrategy PullRequestStrategy   `json:"defaultStrategy,omitempty"`
+	Strategies      []PullRequestStrategy `json:"strategies,omitempty"`
+	Type            string                `json:"type,omitempty"`
+}
+
+type PullRequestStrategy struct {
+	Description string `json:"description,omitempty"`
+	Enabled     bool   `json:"enabled,omitempty"`
+	Flag        string `json:"flag,omitempty"`
+	Id          string `json:"id,omitempty"`
+	Name        string `json:"name,omitempty"`
+}
