@@ -227,6 +227,7 @@ type PullRequestSettings struct {
 	RequiredAllTasksComplete bool                   `json:"requiredAllTasksComplete,omitempty"`
 	RequiredApprovers        uint                   `json:"requiredApprovers,omitempty"`
 	RequiredSuccessfulBuilds uint                   `json:"requiredSuccessfulBuilds,omitempty"`
+	UnapproveOnUpdate        bool                   `json:"unapproveOnUpdate,omitempty"`
 }
 
 type PullRequestMergeConfig struct {
