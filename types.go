@@ -243,3 +243,21 @@ type PullRequestStrategy struct {
 	Id          string `json:"id,omitempty"`
 	Name        string `json:"name,omitempty"`
 }
+
+type BranchingModel struct {
+	Development BranchingModelBranch `json:"development,omitempty"`
+	Production  BranchingModelBranch `json:"production,omitempty"`
+	Types       []BranchingModelType `json:"types,omitempty"`
+}
+
+type BranchingModelBranch struct {
+	RefId      string `json:"refId,omitempty"`
+	UseDefault bool   `json:"useDefault,omitempty"`
+}
+
+type BranchingModelType struct {
+	Id          string `json:"id,omitempty"`
+	DisplayName string `json:"displayName,omitempty"`
+	Enabled     bool   `json:"enabled,omitempty"`
+	Prefix      string `json:"prefix,omitempty"`
+}
