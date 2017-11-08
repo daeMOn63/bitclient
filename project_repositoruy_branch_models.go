@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+// Those branchmodel/configuration calls are not officially documented. Thanks to this comment for detailing usage:
+// https://jira.atlassian.com/browse/BSERV-5411?focusedCommentId=1517096&page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-1517096
 func (bc *BitClient) GetBranchingModel(projectKey, repositorySlug string) (BranchingModel, error) {
 	rError := new(ErrorResponse)
 
