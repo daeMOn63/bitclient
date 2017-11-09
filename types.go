@@ -261,3 +261,18 @@ type BranchingModelType struct {
 	Enabled     bool   `json:"enabled,omitempty"`
 	Prefix      string `json:"prefix,omitempty"`
 }
+
+type Hook struct {
+	Details    HookDetails `json:"details,omitempty"`
+	Enabled    bool        `json:"enabled,omitempty"`
+	Configured bool        `json:"configured,omitempty"`
+}
+
+type HookDetails struct {
+	Key           string `json:"key,omitempty"`
+	Name          string `json:"name,omitempty"`
+	Type          string `json:"type,omitempty"`
+	Description   string `json:"description,omitempty"`
+	Version       string `json:"version,omitempty"`
+	ConfigFormKey string `json:"configFormKey,omitempty"`
+}
