@@ -12,9 +12,9 @@ func (bc *BitClient) GetBranchingModel(projectKey, repositorySlug string) (Branc
 	response := BranchingModel{}
 
 	url := fmt.Sprintf("/rest/branch-utils/1.0/projects/%s/repos/%s/branchmodel/configuration", projectKey, repositorySlug)
-	resp, err := bc.sling.New().Get(url).Receive(&response, rError)
+	resp, _ := bc.sling.New().Get(url).Receive(&response, rError)
 
-	resp, err = bc.checkReponse(resp, err)
+	resp, err := bc.checkReponse(resp, rError)
 
 	return response, err
 }
@@ -23,9 +23,9 @@ func (bc *BitClient) SetBranchingModel(projectKey, repositorySlug string, settin
 	rError := new(ErrorResponse)
 
 	url := fmt.Sprintf("/rest/branch-utils/1.0/projects/%s/repos/%s/branchmodel/configuration", projectKey, repositorySlug)
-	resp, err := bc.sling.New().Put(url).BodyJSON(settings).Receive(nil, rError)
+	resp, _ := bc.sling.New().Put(url).BodyJSON(settings).Receive(nil, rError)
 
-	resp, err = bc.checkReponse(resp, err)
+	resp, err := bc.checkReponse(resp, rError)
 
 	return err
 }

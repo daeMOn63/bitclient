@@ -23,9 +23,9 @@ func (bc *BitClient) GetRepositoryBranchRestrictions(projectKey, repositorySlug 
 	response := GetRepositoryBranchRestrictionResponse{}
 
 	url := fmt.Sprintf("/rest/branch-permissions/2.0/projects/%s/repos/%s/restrictions", projectKey, repositorySlug)
-	resp, err := bc.sling.New().Get(url).QueryStruct(params).Receive(&response, rError)
+	resp, _ := bc.sling.New().Get(url).QueryStruct(params).Receive(&response, rError)
 
-	resp, err = bc.checkReponse(resp, err)
+	resp, err := bc.checkReponse(resp, rError)
 
 	return response.Values, err
 }
@@ -42,9 +42,9 @@ func (bc *BitClient) SetRepositoryBranchRestrictions(projectKey, repositorySlug 
 	rError := new(ErrorResponse)
 
 	url := fmt.Sprintf("/rest/branch-permissions/2.0/projects/%s/repos/%s/restrictions", projectKey, repositorySlug)
-	resp, err := bc.sling.New().Post(url).BodyJSON(params).Receive(nil, rError)
+	resp, _ := bc.sling.New().Post(url).BodyJSON(params).Receive(nil, rError)
 
-	resp, err = bc.checkReponse(resp, err)
+	resp, err := bc.checkReponse(resp, rError)
 
 	return err
 }
