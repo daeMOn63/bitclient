@@ -1,9 +1,11 @@
 package bitclient
 
 const (
-	REPO_READ  = "REPO_READ"
-	REPO_WRITE = "REPO_WRITE"
-	REPO_ADMIN = "REPO_ADMIN"
+	REPO_READ     = "REPO_READ"
+	REPO_WRITE    = "REPO_WRITE"
+	REPO_ADMIN    = "REPO_ADMIN"
+	PROJECT_READ  = "PROJECT_READ"
+	PROJECT_WRITE = "PROJECT_WRITE"
 )
 
 type Link map[string]string
