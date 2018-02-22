@@ -41,13 +41,13 @@ type Repository struct {
 }
 
 type User struct {
-	Name         string
-	EmailAddress string
-	Id           uint
-	DisplayName  string
-	Active       bool
-	Slug         string
-	Type         string
+	Name         string `json:"name,omitempty"`
+	EmailAddress string `json:"emailAddress,omitempty"`
+	Id           uint   `json:"id,omitempty"`
+	DisplayName  string `json:"displayName,omitempty"`
+	Active       bool   `json:"active,omitempty"`
+	Slug         string `json:"slug,omitempty"`
+	Type         string `json:"type,omitempty"`
 }
 
 type DetailedUser struct {
@@ -277,4 +277,13 @@ type HookDetails struct {
 	Description   string `json:"description,omitempty"`
 	Version       string `json:"version,omitempty"`
 	ConfigFormKey string `json:"configFormKey,omitempty"`
+}
+
+type DefaultReviewers struct {
+	Id                int        `json:"id, omitempty"`
+	Repository        Repository `json:"repository,omitempty"`
+	FromRefMatcher    Matcher    `json:"fromRefMatcher,omitempty"`
+	ToRefMatcher      Matcher    `json:"toRefMatcher,omitempty"`
+	Reviewers         []User     `json:"reviewers,omitempty"`
+	RequiredApprovals int        `json:"requiredApprovals,omitempty"`
 }
