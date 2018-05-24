@@ -14,6 +14,8 @@ BitClient is a Golang Api client for Atlassian Bitbucket REST api (v1.0).
 ## Overview
 This library allow you to call Bitbucket api endpoint from you go programs, converting json responses to Go structs (see [types.go](types.go) for the complete list).
 
+It's currently integrated in a command line utility [BitAdmin](https://github.com/daeMOn63/bitadmin), aimed to ease and speed up administration of Bitbucket repositories.
+
 ## Installation
 Make sure you have a working Go environment.  Go version 1.2+ is supported.  [See
 the install instructions for Go](http://golang.org/doc/install.html).
