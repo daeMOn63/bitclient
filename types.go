@@ -18,13 +18,13 @@ type Error struct {
 }
 
 type Project struct {
-	Key         string
-	Id          uint
-	Name        string
-	Description string
-	Public      bool
-	Type        string
-	Links       Links
+	Key         string `json:"key,omitempty"`
+	Id          uint   `json:"id,omitempty"`
+	Name        string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
+	Public      bool   `json:"public,omitempty"`
+	Type        string `json:"type,omitempty"`
+	Links       Links  `json:"links,omitempty"`
 }
 
 type Repository struct {
