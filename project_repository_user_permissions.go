@@ -20,6 +20,21 @@ func (bc *BitClient) SetRepositoryUserPermission(projectKey string, repositorySl
 	return err
 }
 
+type UnsetRepositoryUserPermissionRequest struct {
+	Username string `url:"name"`
+}
+
+func (bc *BitClient) UnsetRepositoryUserPermission(projectKey string, repositorySlug string, params UnsetRepositoryUserPermissionRequest) error {
+
+	_, err := bc.DoDeleteUrl(
+		fmt.Sprintf("/projects/%s/repos/%s/permissions/users", projectKey, repositorySlug),
+		params,
+		nil,
+	)
+
+	return err
+}
+
 type GetRepositoryUserPermissionRequest struct {
 	PagedRequest
 	Filter string
