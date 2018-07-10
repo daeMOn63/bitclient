@@ -20,6 +20,21 @@ func (bc *BitClient) SetRepositoryGroupPermission(projectKey string, repositoryS
 	return err
 }
 
+type UnsetRepositoryGroupPermissionRequest struct {
+	Name string `url:"name"`
+}
+
+func (bc *BitClient) UnsetRepositoryGroupPermission(projectKey string, repositorySlug string, params UnsetRepositoryGroupPermissionRequest) error {
+
+	_, err := bc.DoDeleteUrl(
+		fmt.Sprintf("/projects/%s/repos/%s/permissions/groups", projectKey, repositorySlug),
+		params,
+		nil,
+	)
+
+	return err
+}
+
 type GetRepositoryGroupPermissionRequest struct {
 	PagedRequest
 	Filter string
