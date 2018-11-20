@@ -149,6 +149,7 @@ type SonarSettingsProject struct {
 	IllegalBranchCharReplacement string `json:"illegalBranchCharReplacement,omitempty"`
 	BranchPrefix                 string `json:"branchPrefix,omitempty"`
 	PullRequestBranch            string `json:"pullRequestBranch,omitempty"`
+	ShowIssuesInSource           bool   `json:"showIssuesInSource,omitempty"`
 	ShowOnlyNewOrChangedLines    bool   `json:"showOnlyNewOrChangedLines,omitempty"`
 	ProjectCleanupEnabled        bool   `json:"projectCleanupEnabled,omitempty"`
 	ForkCleanupEnabled           bool   `json:"forkCleanupEnabled,omitempty"`
