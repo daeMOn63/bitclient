@@ -154,6 +154,7 @@ type SonarSettingsProject struct {
 	ForkCleanupEnabled           bool   `json:"forkCleanupEnabled,omitempty"`
 	MatchingBranchesRegex        string `json:"matchingBranchesRegex,omitempty"`
 	IncrementalModeForMatches    string `json:"incrementalModeForMatches,omitempty"`
+	UseSonarBranchFeature        bool   `json:"useSonarBranchFeature,omitempty"`
 }
 
 type SonarSettingsIssues struct {
@@ -280,7 +281,7 @@ type HookDetails struct {
 }
 
 type DefaultReviewers struct {
-	Id                int        `json:"id, omitempty"`
+	Id                int        `json:"id,omitempty"`
 	Repository        Repository `json:"repository,omitempty"`
 	FromRefMatcher    Matcher    `json:"fromRefMatcher,omitempty"`
 	ToRefMatcher      Matcher    `json:"toRefMatcher,omitempty"`
