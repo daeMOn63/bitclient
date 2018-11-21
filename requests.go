@@ -38,7 +38,7 @@ func (bc *BitClient) checkReponse(resp *http.Response, errorResponse *ErrorRespo
 
 		message := fmt.Sprintf("%s - %s\n", resp.Status, resp.Request.URL.String())
 		for _, e := range errorResponse.Errors {
-			message += e.Message
+			message += e.Context + ": " + e.Message + "\n"
 		}
 
 		return nil, RequestError{
