@@ -1,19 +1,19 @@
 package bitclient
 
-type GetPullRequestSuggestionsRequest struct {
+type GetMyPullRequestSuggestionsRequest struct {
 	PagedRequest
 	ChangeSince uint `url:"changeSince,omitempty"`
 	Limit       uint `url:"limit,omitempty"`
 }
 
-type GetPullRequestSuggestionsResponse struct {
+type GetMyPullRequestSuggestionsResponse struct {
 	PagedResponse
 	Values []PullRequestSuggestion
 }
 
-func (bc *BitClient) GetPullRequestSuggestions(params GetPullRequestSuggestionsRequest) (GetPullRequestSuggestionsResponse, error) {
+func (bc *BitClient) GetMyPullRequestSuggestions(params GetMyPullRequestSuggestionsRequest) (GetMyPullRequestSuggestionsResponse, error) {
 
-	response := GetPullRequestSuggestionsResponse{}
+	response := GetMyPullRequestSuggestionsResponse{}
 
 	_, err := bc.DoGet(
 		"/dashboard/pull-request-suggestions",
@@ -24,7 +24,7 @@ func (bc *BitClient) GetPullRequestSuggestions(params GetPullRequestSuggestionsR
 	return response, err
 }
 
-type GetPullRequestsRequest struct {
+type GetMyPullRequestsRequest struct {
 	PagedRequest
 	State             string `url:"state,omitempty"`
 	Role              string `url:"role,omitempty"`
@@ -33,14 +33,14 @@ type GetPullRequestsRequest struct {
 	ClosedSince       string `url:"closedSince,omitempty"`
 }
 
-type GetPullRequestsResponse struct {
+type GetMyPullRequestsResponse struct {
 	PagedResponse PagedResponse
 	PullRequests  []PullRequest
 }
 
-func (bc *BitClient) GetPullRequests(params GetPullRequestsRequest) (GetPullRequestsResponse, error) {
+func (bc *BitClient) GetMyPullRequests(params GetMyPullRequestsRequest) (GetMyPullRequestsResponse, error) {
 
-	response := GetPullRequestsResponse{}
+	response := GetMyPullRequestsResponse{}
 
 	_, err := bc.DoGet(
 		"/dashboard/pull-requests",
