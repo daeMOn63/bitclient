@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+const yaccHookKey = "com.isroot.stash.plugin.yacc:yaccHook"
+
 type GetHooksRequest struct {
 	PagedRequest
 	Type string
@@ -45,4 +47,17 @@ func (bc *BitClient) DisableHook(projectKey, repositorySlug, hookKey string) err
 	)
 
 	return err
+}
+
+// GetYACCHookSettings return the YACC hook settings from bitbucket
+func (bc *BitClient) GetYACCHookSettings(projectKey string , repositorySlug string) (YaccHookSettings, error) {
+	response := YaccHookSettings{}
+
+	_, err := bc.DoGet(
+		fmt.Sprintf("/projects/%s/repos/%s/settings/hooks/%s/settings", projectKey, repositorySlug, yaccHookKey),
+		nil,
+		&response,
+	)
+
+	return response, err
 }
