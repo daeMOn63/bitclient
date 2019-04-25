@@ -289,3 +289,28 @@ type DefaultReviewers struct {
 	Reviewers         []User     `json:"reviewers,omitempty"`
 	RequiredApprovals int        `json:"requiredApprovals,omitempty"`
 }
+
+// YaccHookSettings define the settings of the YACC hook
+type YaccHookSettings struct {
+	RequireMatchingAuthorEmail     bool   `json:"requireMatchingAuthorEmail,omitempty"`
+	RequireMatchingAuthorName      bool   `json:"requireMatchingAuthorName,omitempty"`
+	CommitterEmailRegex            string `json:"committerEmailRegex,omitempty"`
+	CommitMessageRegex             string `json:"commitMessageRegex,omitempty"`
+	RequireJiraIssue               bool   `json:"requireJiraIssue,omitempty"`
+	IgnoreUnknownIssueProjectKeys  bool   `json:"ignoreUnknownIssueProjectKeys,omitempty"`
+	IssueJqlMatcher                string `json:"issueJqlMatcher,omitempty"`
+	BranchNameRegex                string `json:"branchNameRegex,omitempty"`
+	ErrorMessageHeader             string `json:"errorMessageHeader,omitempty"`
+	ErrorMessageCommiterEmail      string `json:"errorMessage.COMMITER_EMAIL,omitempty"`
+	ErrorMessageCommiterEmailRegex string `json:"errorMessage.COMMITER_EMAIL_REGEX,omitempty"`
+	ErrorMessageCommiterName       string `json:"errorMessage.COMMITER_NAME,omitempty"`
+	ErrorMessageCommitRegex        string `json:"errorMessage.COMMIT_REGEX,omitempty"`
+	ErrorMessageIssueJQL           string `json:"errorMessage.ISSUE_JQL,omitempty"`
+	ErrorMessageBranchName         string `json:"errorMessage.BRANCH_NAME,omitempty"`
+	ErrorMessageFooter             string `json:"errorMessageFooter,omitempty"`
+	ExcludeMergeCommits            bool   `json:"excludeMergeCommits,omitempty"`
+	ExcludeByRegex                 string `json:"excludeByRegex,omitempty"`
+	ExcludeBranchRegex             string `json:"excludeBranchRegex,omitempty"`
+	ExcludeServiceUserCommits      bool   `json:"excludeServiceUserCommits,omitempty"`
+	ExcludeUsers                   string `json:"excludeUsers,omitempty"`
+}
